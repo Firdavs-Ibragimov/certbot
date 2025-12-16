@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        background: #0e1621;
+      }
+      .page {
+        width: 297mm;
+        height: 210mm;
+        background: url("{{ background }}") center/cover no-repeat !important;
+        position: relative;
+        font-family: "Montserrat", sans-serif;
+        color: #000;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .name {
+        position: absolute;
+        top: 90mm;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 48pt;
+        font-weight: 900;
+        letter-spacing: 2px;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .text1 {
+        position: absolute;
+        top: 115mm;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 25pt;
+        font-weight: 700;
+        text-align: center;
+        width: 88%;
+      }
+
+      .text2 {
+        position: absolute;
+        top: 127mm;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 25pt;
+        font-weight: 700;
+        color: #000 !important;
+        text-align: center;
+        width: 90%;
+      }
+      .text3 {
+        position: absolute;
+        top: 138mm;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 25pt;
+        font-weight: 700;
+        line-height: 1.45;
+        text-align: center;
+        width: 100%;
+      }
+      .text4 {
+        position: absolute;
+        top: 52mm;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20pt;
+        font-weight: 700;
+        line-height: 1.45;
+        text-align: center;
+        width: 100%;
+        color: white;
+      }
+      .taqdir {
+        position: absolute;
+        top: 150mm;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 25pt;
+        font-weight: 700;
+        text-align: center;
+        width: 90%;
+      }
+
+      /* Sana uchun */
+      .footer {
+        position: absolute;
+        bottom: 18mm;
+        right: 79mm;
+        font-size: 16pt;
+        font-weight: 600;
+        text-align: right;
+        opacity: 1; /* TUZATILDI: opacity 1 qilindi */
+        color: #000; /* qora rang */
+      }
+
+      .certid {
+        position: absolute;
+        /* user-provided coords (converted to mm):
+           x: 23.4cm -> left: 234mm
+           y: 18.49cm -> top: 184.9mm
+           width: 4.29cm -> 42.9mm
+           height: 0.66cm -> 6.6mm */
+        left: 217mm;
+        top: 184.9mm;
+        width: 42.9mm;
+        height: 6.6mm;
+        font-size: 16.5pt;
+        font-weight: 600;
+        text-align: right;
+        opacity: 1; /* TUZATILDI: opacity 1 qilindi */
+        color: #000; /* qora rang */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="cert-title">SERTIFIKAT</div>
+      <div class="text4">MALAKA OSHIRGANLIK HAQIDA</div>
+      <div class="name" style="font-size: {{ name_font_size }}pt">
+        {{ name }}
+      </div>
+      <div class="text1">
+        Davlat va xo‘jalik boshqaruvi, mahalliy davlat hokimiyati
+      </div>
+      {% set clen = course|length if course else 0 %}
+      <div
+        class="course {% if clen>30 %}xlong{% elif clen>20 %}long{% elif clen>12 %}medium{% else %}short{% endif %}"
+      >
+        {{ course|upper }}
+      </div>
+      <div
+        class="text2"
+        style="transform: translateX(-50%) translateX({{ text2_shift_px }}px);"
+      >
+        o'rganlari, tashkilotlar va idoralar xodimlari<br />
+      </div>
+      <div class="text3">uchun jami 24.0 soatlik malaka oshirish</div>
+      <div class="taqdir">kursini muvaffaqiyatli yakunladi</div>
+      <div class="footer">{{ date }}</div>
+      <!-- Sana endi chiqadi -->
+      <div class="certid">{{ cert_id }}</div>
+    </div>
+  </body>
+</html>

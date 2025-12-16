@@ -1,0 +1,15 @@
+{
+  "name": "telegram-cert-bot-js",
+  "version": "1.0.0",
+  "description": "Telegram certificate bot in Node.js (kept in 'js da' folder)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "nunjucks": "^3.2.4",
+    "node-telegram-bot-api": "^0.61.0",
+    "puppeteer": "^21.0.0"
+  }
+}
